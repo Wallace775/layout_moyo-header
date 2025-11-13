@@ -1,99 +1,99 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 :root {
-  --blue: #00acdc;
-  --header-height: 60px;
-  --max-content-width: 1200px;
-  --logo-nav-spacing: 50px;
-  --header-padding: 10px;
+    /* Variável de altura definida em 1 lugar (Requisito Luke/Revisor) */
+    --header-height: 60px;
+    --logo-spacing: 20px;
 }
 
-body {
-  margin: 0;
-  font-family: Roboto, sans-serif;
-}
-
+/* O Header é full-width, sem padding lateral ou altura fixa */
 header {
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  height: var(--header-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+
 }
 
+/* O Container define a largura máxima e o padding lateral */
 .container {
-  max-width: var(--max-content-width);
-  margin: 0 auto;
-  padding: 0 50px;
-  height: 100%;
-  display: flex;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    max-width: 1200px;
+
+    min-height: var(--header-height);
+
+    padding: 0 49px 0 29px;
 }
 
+/* Estilos globais 'a' são mínimos */
+a {
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #00acdc;
+}
+
+/* A logo-link deve ter o espaçamento lateral */
 .logo-link {
-  margin-right: var(--logo-nav-spacing);
+    margin-right: var(--logo-spacing);
 }
 
+/* A logo tem altura fixa */
 .logo {
-  display: block;
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
+    height: 40px;
 }
 
-.nav,
+/* Navegação e lista */
+nav,
 .nav__list {
-    min-height: 40px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.nav__list {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  flex-wrap: nowrap;
-}
-
-.nav__item + .nav__item {
-  margin-left: 30px;
-}
-
+/* O link define a altura e centraliza o texto com flexbox */
 .nav__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: var(--header-height);
-  font-weight: 500;
-  font-size: 12px;
-  line-height: normal;
-  text-transform: uppercase;
-  color: #000;
-  text-decoration: none;
-  white-space: nowrap;
-  position: relative;
-  transition: color 0.2s ease;
+    /* Altura do link DEVE ser a altura do header (variável) */
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
-.nav__link:hover {
-  color: var(--blue);
+/* Espaçamento entre os itens (Requisito: sem margem no primeiro/último) */
+.nav__item + .nav__item {
+    margin-left: 20px; /* Ajuste para o valor exato do seu mock, ex: 20px ou 30px */
 }
 
+/* Barra ativa */
 .nav__link.is-active {
-  color: var(--blue);
+    position: relative;
+    color: #00acdc;
 }
 
 .nav__link.is-active::after {
-  content: "";
-  position: absolute;
-  width: 37px;
-  height: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--blue);
-  border-radius: 8px;
-  bottom: 0;
+    content: "";
+    position: absolute;
+    height: 4px;
+    background: #00acdc;
+    border-radius: 8px;
+    display: block;
+
+    /* Centralização horizontal via transformação */
+    width: 37px; /* Largura fixa (verifique no seu mock) */
+    left: 50%;
+    transform: translateX(-50%);
+
+    bottom: 0;
 }
