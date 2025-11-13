@@ -1,99 +1,86 @@
-:root {
-    /* Variável de altura definida em 1 lugar (Requisito Luke/Revisor) */
-    --header-height: 60px;
-    --logo-spacing: 20px;
+body {
+    margin: 0;
+    padding: 0;
 }
 
-/* O Header é full-width, sem padding lateral ou altura fixa */
-header {
+.header {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    border-bottom: 1px solid #ccc;
-
+    border-bottom: 1px solid #e5e5e5;
 }
 
-/* O Container define a largura máxima e o padding lateral */
+:root {
+    --header-link-height: 60px;
+    --logo-margin-right: 51px;
+    --item-spacing: 30px;
+    --blue-color: #00acdc;
+}
+
 .container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     width: 100%;
-
     max-width: 1200px;
-
-    min-height: var(--header-height);
-
     padding: 0 49px 0 29px;
 }
 
-/* Estilos globais 'a' são mínimos */
-a {
+.nav__link {
     text-decoration: none;
     color: #000;
     text-transform: uppercase;
     font-size: 11px;
     font-weight: 500;
+    height: var(--header-link-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-family: Roboto, sans-serif;
 }
 
-a:hover {
-    color: #00acdc;
+.nav__link:hover {
+    color: var(--blue-color);
 }
 
-/* A logo-link deve ter o espaçamento lateral */
 .logo-link {
-    margin-right: var(--logo-spacing);
+    margin-right: var(--logo-margin-right);
 }
 
-/* A logo tem altura fixa */
 .logo {
     height: 40px;
 }
 
-/* Navegação e lista */
-nav,
 .nav__list {
     display: flex;
     align-items: center;
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style: none;
 }
 
-/* O link define a altura e centraliza o texto com flexbox */
-.nav__link {
-    /* Altura do link DEVE ser a altura do header (variável) */
-    height: var(--header-height);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+.nav__item {
+    margin-left: var(--item-spacing);
 }
 
-/* Espaçamento entre os itens (Requisito: sem margem no primeiro/último) */
-.nav__item + .nav__item {
-    margin-left: 20px; /* Ajuste para o valor exato do seu mock, ex: 20px ou 30px */
+.nav__item:first-child {
+    margin-left: 0;
 }
 
-/* Barra ativa */
 .nav__link.is-active {
     position: relative;
-    color: #00acdc;
+    color: var(--blue-color);
 }
 
 .nav__link.is-active::after {
     content: "";
     position: absolute;
     height: 4px;
-    background: #00acdc;
+    width: 37px;
+    background: var(--blue-color);
     border-radius: 8px;
-    display: block;
-
-    /* Centralização horizontal via transformação */
-    width: 37px; /* Largura fixa (verifique no seu mock) */
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-
-    bottom: 0;
 }
